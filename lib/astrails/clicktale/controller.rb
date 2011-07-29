@@ -25,13 +25,13 @@ module Astrails
       end
 
       def clicktaleize
-        returning(yield) do
+        (yield).tap do
           cache_page(nil, "/clicktale/#{clicktale_cache_token}") if clicktale_enabled?
         end
       end
 
       def clicktale_enabled?
-        @clicktale_enabled ||= clicktale_config[:enabled] && request.format.try(:html?) && request.get?
+        @clicktale_enabled ||= clicktale_config[:enabled] && request.format.try(:html?)
       end
 
       def clicktale_config
