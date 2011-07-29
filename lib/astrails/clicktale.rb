@@ -13,7 +13,7 @@ module Astrails
 
     CONFIG = HashWithIndifferentAccess.new
     begin
-      conffile = File.join(::Rails.root, "config", "clicktale.yml")
+      conffile = File.join(RAILS_ROOT, "config", "clicktale.yml")
       conf = YAML.load(File.read(conffile))
       CONFIG.merge!(conf[::Rails.env])
     rescue
